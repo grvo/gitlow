@@ -1,0 +1,4 @@
+* text=auto
+
+# fazendo com que todos os tipos de arquivos sejam reconhecíveis
+*.* text linguist-detectable

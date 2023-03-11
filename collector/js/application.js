@@ -1,70 +1,88 @@
 ! function(e, t) {
     "object" == typeof module && "object" == typeof module.exports ? module.exports = e.document ? t(e, !0) : function(e) {
-        if (!e.document) throw new Error("jQuery requires a window with a document");
-        return t(e)
+        if (!e.document)
+            throw new Error("jQuery requires a window with a document");
+
+        return t(e);
     } : t(e)
 }("undefined" != typeof window ? window : this, function(C, e) {
     function s(e) {
         var t = !!e && "length" in e && e.length,
             n = pe.type(e);
-        return "function" !== n && !pe.isWindow(e) && ("array" === n || 0 === t || "number" == typeof t && 0 < t && t - 1 in e)
+
+        return "function" !== n && !pe.isWindow(e) && ("array" === n || 0 === t || "number" == typeof t && 0 < t && t - 1 in e);
     }
 
     function t(e, n, r) {
         if (pe.isFunction(n)) return pe.grep(e, function(e, t) {
-            return !!n.call(e, t, e) !== r
+            return !!n.call(e, t, e) !== r;
         });
+
         if (n.nodeType) return pe.grep(e, function(e) {
-            return e === n !== r
+            return e === n !== r;
         });
+
         if ("string" == typeof n) {
-            if (Ce.test(n)) return pe.filter(n, e, r);
-            n = pe.filter(n, e)
+            if (Ce.test(n))
+                return pe.filter(n, e, r);
+
+            n = pe.filter(n, e);
         }
+
         return pe.grep(e, function(e) {
-            return -1 < pe.inArray(e, n) !== r
-        })
+            return -1 < pe.inArray(e, n) !== r;
+        });
     }
 
     function n(e, t) {
         for (;
             (e = e[t]) && 1 !== e.nodeType;);
-        return e
+
+        return e;
     }
 
     function c(e) {
         var n = {};
+
         return pe.each(e.match(Ae) || [], function(e, t) {
-            n[t] = !0
-        }), n
+            n[t] = !0;
+        }), n;
     }
 
     function i() {
-        re.addEventListener ? (re.removeEventListener("DOMContentLoaded", o), C.removeEventListener("load", o)) : (re.detachEvent("onreadystatechange", o), C.detachEvent("onload", o))
+        re.addEventListener
+            ? (re.removeEventListener("DOMContentLoaded", o), C.removeEventListener("load", o))
+            : (re.detachEvent("onreadystatechange", o), C.detachEvent("onload", o));
     }
 
     function o() {
-        (re.addEventListener || "load" === C.event.type || "complete" === re.readyState) && (i(), pe.ready())
+        (re.addEventListener || "load" === C.event.type || "complete" === re.readyState) && (i(), pe.ready());
     }
 
     function u(e, t, n) {
         if (n === undefined && 1 === e.nodeType) {
             var r = "data-" + t.replace(qe, "-$1").toLowerCase();
+
             if ("string" == typeof(n = e.getAttribute(r))) {
                 try {
                     n = "true" === n || "false" !== n && ("null" === n ? null : +n + "" === n ? +n : He.test(n) ? pe.parseJSON(n) : n)
                 } catch (i) {}
-                pe.data(e, t, n)
-            } else n = undefined
+
+                pe.data(e, t, n);
+            } else n = undefined;
         }
-        return n
+
+        return n;
     }
 
     function l(e) {
         var t;
+
         for (t in e)
-            if (("data" !== t || !pe.isEmptyObject(e[t])) && "toJSON" !== t) return !1;
-        return !0
+            if (("data" !== t || !pe.isEmptyObject(e[t])) && "toJSON" !== t)
+                return !1;
+
+        return !0;
     }
 
     function r(e, t, n, r) {
@@ -73,6 +91,7 @@
                 s = e.nodeType,
                 u = s ? pe.cache : e,
                 l = s ? e[a] : e[a] && a;
+                
             if (l && u[l] && (r || u[l].data) || n !== undefined || "string" != typeof t) return l || (l = s ? e[a] = ne.pop() || pe.guid++ : a), u[l] || (u[l] = s ? {} : {
                 toJSON: pe.noop
             }), "object" != typeof t && "function" != typeof t || (r ? u[l] = pe.extend(u[l], t) : u[l].data = pe.extend(u[l].data, t)), o = u[l], r || (o.data || (o.data = {}), o = o.data), n !== undefined && (o[pe.camelCase(t)] = n), "string" == typeof t ? null == (i = o[t]) && (i = o[pe.camelCase(t)]) : i = o, i
@@ -84,6 +103,7 @@
             var r, i, o = e.nodeType,
                 a = o ? pe.cache : e,
                 s = o ? e[pe.expando] : pe.expando;
+
             if (a[s]) {
                 if (t && (r = n ? a[s] : a[s].data)) {
                     i = (t = pe.isArray(t) ? t.concat(pe.map(t, pe.camelCase)) : t in r ? [t] : (t = pe.camelCase(t)) in r ? [t] : t.split(" ")).length;
@@ -113,25 +133,30 @@
     function g(e) {
         var t = Ve.split("|"),
             n = e.createDocumentFragment();
+
         if (n.createElement)
             for (; t.length;) n.createElement(t.pop());
-        return n
+
+        return n;
     }
 
     function y(e, t) {
         var n, r, i = 0,
             o = "undefined" != typeof e.getElementsByTagName ? e.getElementsByTagName(t || "*") : "undefined" != typeof e.querySelectorAll ? e.querySelectorAll(t || "*") : undefined;
+
         if (!o)
             for (o = [], n = e.childNodes || e; null != (r = n[i]); i++) !t || pe.nodeName(r, t) ? o.push(r) : pe.merge(o, y(r, t));
-        return t === undefined || t && pe.nodeName(e, t) ? pe.merge([e], o) : o
+
+        return t === undefined || t && pe.nodeName(e, t) ? pe.merge([e], o) : o;
     }
 
     function v(e, t) {
-        for (var n, r = 0; null != (n = e[r]); r++) pe._data(n, "globalEval", !t || pe._data(t[r], "globalEval"))
+        for (var n, r = 0; null != (n = e[r]); r++)
+            pe._data(n, "globalEval", !t || pe._data(t[r], "globalEval"));
     }
 
     function b(e) {
-        ze.test(e.type) && (e.defaultChecked = e.checked)
+        ze.test(e.type) && (e.defaultChecked = e.checked);
     }
 
     function m(e, t, n, r, i) {
@@ -149,49 +174,53 @@
             if (r && -1 < pe.inArray(a, r)) i && i.push(a);
             else if (s = pe.contains(a.ownerDocument, a), u = y(p.appendChild(a), "script"), s && v(u), n)
             for (o = 0; a = u[o++];) Xe.test(a.type || "") && n.push(a);
-        return u = null, p
+        return u = null, p;
     }
 
     function f() {
-        return !0
+        return !0;
     }
 
     function p() {
-        return !1
+        return !1;
     }
 
     function h() {
         try {
-            return re.activeElement
+            return re.activeElement;
         } catch (e) {}
     }
 
     function x(e, t, n, r, i, o) {
         var a, s;
+
         if ("object" == typeof t) {
             for (s in "string" != typeof n && (r = r || n, n = undefined), t) x(e, s, n, r, t[s], o);
             return e
         }
+
         if (null == r && null == i ? (i = n, r = n = undefined) : null == i && ("string" == typeof n ? (i = r, r = undefined) : (i = r, r = n, n = undefined)), !1 === i) i = p;
         else if (!i) return e;
+
         return 1 === o && (a = i, (i = function(e) {
-            return pe().off(e), a.apply(this, arguments)
+            return pe().off(e), a.apply(this, arguments);
         }).guid = a.guid || (a.guid = pe.guid++)), e.each(function() {
-            pe.event.add(this, t, i, r, n)
-        })
+            pe.event.add(this, t, i, r, n);
+        });
     }
 
     function w(e, t) {
-        return pe.nodeName(e, "table") && pe.nodeName(11 !== t.nodeType ? t : t.firstChild, "tr") ? e.getElementsByTagName("tbody")[0] || e.appendChild(e.ownerDocument.createElement("tbody")) : e
+        return pe.nodeName(e, "table") && pe.nodeName(11 !== t.nodeType ? t : t.firstChild, "tr") ? e.getElementsByTagName("tbody")[0] || e.appendChild(e.ownerDocument.createElement("tbody")) : e;
     }
 
     function T(e) {
-        return e.type = (null !== pe.find.attr(e, "type")) + "/" + e.type, e
+        return e.type = (null !== pe.find.attr(e, "type")) + "/" + e.type, e;
     }
 
     function E(e) {
         var t = st.exec(e.type);
-        return t ? e.type = t[1] : e.removeAttribute("type"), e
+
+        return t ? e.type = t[1] : e.removeAttribute("type"), e;
     }
 
     function S(e, t) {
@@ -199,6 +228,7 @@
             var n, r, i, o = pe._data(e),
                 a = pe._data(t, o),
                 s = o.events;
+
             if (s)
                 for (n in delete a.handle, a.events = {}, s)
                     for (r = 0, i = s[n].length; r < i; r++) pe.event.add(t, n, s[n][r]);
@@ -208,81 +238,108 @@
 
     function k(e, t) {
         var n, r, i;
+
         if (1 === t.nodeType) {
             if (n = t.nodeName.toLowerCase(), !de.noCloneEvent && t[pe.expando]) {
-                for (r in (i = pe._data(t)).events) pe.removeEvent(t, r, i.handle);
-                t.removeAttribute(pe.expando)
+                for (r in (i = pe._data(t)).events)
+                    pe.removeEvent(t, r, i.handle);
+
+                t.removeAttribute(pe.expando);
             }
+
             "script" === n && t.text !== e.text ? (T(t).text = e.text, E(t)) : "object" === n ? (t.parentNode && (t.outerHTML = e.outerHTML), de.html5Clone && e.innerHTML && !pe.trim(t.innerHTML) && (t.innerHTML = e.innerHTML)) : "input" === n && ze.test(e.type) ? (t.defaultChecked = t.checked = e.checked, t.value !== e.value && (t.value = e.value)) : "option" === n ? t.defaultSelected = t.selected = e.defaultSelected : "input" !== n && "textarea" !== n || (t.defaultValue = e.defaultValue)
         }
     }
 
     function j(n, r, i, o) {
         r = oe.apply([], r);
+
         var e, t, a, s, u, l, c = 0,
             d = n.length,
             f = d - 1,
             p = r[0],
             h = pe.isFunction(p);
+
         if (h || 1 < d && "string" == typeof p && !de.checkClone && at.test(p)) return n.each(function(e) {
             var t = n.eq(e);
             h && (r[0] = p.call(this, e, t.html())), j(t, r, i, o)
         });
+
         if (d && (e = (l = m(r, n[0].ownerDocument, !1, n, o)).firstChild, 1 === l.childNodes.length && (l = e), e || o)) {
             for (a = (s = pe.map(y(l, "script"), T)).length; c < d; c++) t = l, c !== f && (t = pe.clone(t, !0, !0), a && pe.merge(s, y(t, "script"))), i.call(n[c], t, c);
             if (a)
                 for (u = s[s.length - 1].ownerDocument, pe.map(s, E), c = 0; c < a; c++) t = s[c], Xe.test(t.type || "") && !pe._data(t, "globalEval") && pe.contains(u, t) && (t.src ? pe._evalUrl && pe._evalUrl(t.src) : pe.globalEval((t.text || t.textContent || t.innerHTML || "").replace(ut, "")));
             l = e = null
         }
-        return n
+
+        return n;
     }
 
     function N(e, t, n) {
-        for (var r, i = t ? pe.filter(t, e) : e, o = 0; null != (r = i[o]); o++) n || 1 !== r.nodeType || pe.cleanData(y(r)), r.parentNode && (n && pe.contains(r.ownerDocument, r) && v(y(r, "script")), r.parentNode.removeChild(r));
-        return e
+        for (var r, i = t ? pe.filter(t, e) : e, o = 0; null != (r = i[o]); o++)
+            n || 1 !== r.nodeType || pe.cleanData(y(r)), r.parentNode && (n && pe.contains(r.ownerDocument, r) && v(y(r, "script")), r.parentNode.removeChild(r));
+        
+        return e;
     }
 
     function _(e, t) {
         var n = pe(t.createElement(e)).appendTo(t.body),
             r = pe.css(n[0], "display");
-        return n.detach(), r
+
+        return n.detach(), r;
     }
 
     function A(e) {
         var t = re,
             n = dt[e];
+
         return n || ("none" !== (n = _(e, t)) && n || ((t = ((ct = (ct || pe("<iframe frameborder='0' width='0' height='0'/>")).appendTo(t.documentElement))[0].contentWindow || ct[0].contentDocument).document).write(), t.close(), n = _(e, t), ct.detach()), dt[e] = n), n
     }
 
     function D(e, t) {
         return {
             get: function() {
-                if (!e()) return (this.get = t).apply(this, arguments);
-                delete this.get
+                if (!e())
+                    return (this.get = t).apply(this, arguments);
+
+                delete this.get;
             }
         }
     }
 
     function L(e) {
         if (e in kt) return e;
+
         for (var t = e.charAt(0).toUpperCase() + e.slice(1), n = St.length; n--;)
-            if ((e = St[n] + t) in kt) return e
+            if ((e = St[n] + t) in kt)
+                return e;
     }
 
     function H(e, t) {
-        for (var n, r, i, o = [], a = 0, s = e.length; a < s; a++)(r = e[a]).style && (o[a] = pe._data(r, "olddisplay"), n = r.style.display, t ? (o[a] || "none" !== n || (r.style.display = ""), "" === r.style.display && We(r) && (o[a] = pe._data(r, "olddisplay", A(r.nodeName)))) : (i = We(r), (n && "none" !== n || !i) && pe._data(r, "olddisplay", i ? n : pe.css(r, "display"))));
-        for (a = 0; a < s; a++)(r = e[a]).style && (t && "none" !== r.style.display && "" !== r.style.display || (r.style.display = t ? o[a] || "" : "none"));
-        return e
+        for (var n, r, i, o = [], a = 0, s = e.length; a < s; a++)
+            (r = e[a]).style && (
+                o[a] = pe._data(r, "olddisplay"), n = r.style.display, t ? (o[a] || "none" !== n || (r.style.display = ""), "" === r.style.display && We(r) && (o[a] = pe._data(r, "olddisplay", A(r.nodeName)))) : (i = We(r), (n && "none" !== n || !i) && pe._data(r, "olddisplay", i ? n : pe.css(r, "display")))
+            );
+        
+        for (a = 0; a < s; a++)
+            (r = e[a]).style && (
+                t && "none" !== r.style.display && "" !== r.style.display || (r.style.display = t ? o[a] || "" : "none")
+            );
+        
+        return e;
     }
 
     function q(e, t, n) {
         var r = Tt.exec(t);
-        return r ? Math.max(0, r[1] - (n || 0)) + (r[2] || "px") : t
+
+        return r ? Math.max(0, r[1] - (n || 0)) + (r[2] || "px") : t;
     }
 
     function F(e, t, n, r, i) {
-        for (var o = n === (r ? "border" : "content") ? 4 : "width" === t ? 1 : 0, a = 0; o < 4; o += 2) "margin" === n && (a += pe.css(e, n + Ie[o], !0, i)), r ? ("content" === n && (a -= pe.css(e, "padding" + Ie[o], !0, i)), "margin" !== n && (a -= pe.css(e, "border" + Ie[o] + "Width", !0, i))) : (a += pe.css(e, "padding" + Ie[o], !0, i), "padding" !== n && (a += pe.css(e, "border" + Ie[o] + "Width", !0, i)));
-        return a
+        for (var o = n === (r ? "border" : "content") ? 4 : "width" === t ? 1 : 0, a = 0; o < 4; o += 2)
+            "margin" === n && (a += pe.css(e, n + Ie[o], !0, i)), r ? ("content" === n && (a -= pe.css(e, "padding" + Ie[o], !0, i)), "margin" !== n && (a -= pe.css(e, "border" + Ie[o] + "Width", !0, i))) : (a += pe.css(e, "padding" + Ie[o], !0, i), "padding" !== n && (a += pe.css(e, "border" + Ie[o] + "Width", !0, i)));
+
+        return a;
     }
 
     function M(e, t, n) {
@@ -290,21 +347,25 @@
             i = "width" === t ? e.offsetWidth : e.offsetHeight,
             o = gt(e),
             a = de.boxSizing && "border-box" === pe.css(e, "boxSizing", !1, o);
+
         if (i <= 0 || null == i) {
-            if (((i = yt(e, t, o)) < 0 || null == i) && (i = e.style[t]), pt.test(i)) return i;
-            r = a && (de.boxSizingReliable() || i === e.style[t]), i = parseFloat(i) || 0
+            if (((i = yt(e, t, o)) < 0 || null == i) && (i = e.style[t]), pt.test(i))
+                return i;
+
+            r = a && (de.boxSizingReliable() || i === e.style[t]), i = parseFloat(i) || 0;
         }
-        return i + F(e, t, n || (a ? "border" : "content"), r, o) + "px"
+
+        return i + F(e, t, n || (a ? "border" : "content"), r, o) + "px";
     }
 
     function R(e, t, n, r, i) {
-        return new R.prototype.init(e, t, n, r, i)
+        return new R.prototype.init(e, t, n, r, i);
     }
 
     function O() {
         return C.setTimeout(function() {
-            jt = undefined
-        }), jt = pe.now()
+            jt = undefined;
+        }), jt = pe.now();
     }
 
     function P(e, t) {
@@ -312,13 +373,16 @@
                 height: e
             },
             i = 0;
-        for (t = t ? 1 : 0; i < 4; i += 2 - t) r["margin" + (n = Ie[i])] = r["padding" + n] = e;
-        return t && (r.opacity = r.width = e), r
+
+        for (t = t ? 1 : 0; i < 4; i += 2 - t)
+            r["margin" + (n = Ie[i])] = r["padding" + n] = e;
+
+        return t && (r.opacity = r.width = e), r;
     }
 
     function I(e, t, n) {
         for (var r, i = (z.tweeners[t] || []).concat(z.tweeners["*"]), o = 0, a = i.length; o < a; o++)
-            if (r = i[o].call(n, t, e)) return r
+            if (r = i[o].call(n, t, e)) return r;
     }
 
     function W(t, e, n) {
@@ -327,6 +391,7 @@
             f = t.style,
             p = t.nodeType && We(t),
             h = pe._data(t, "fxshow");
+
         for (r in n.queue || (null == (s = pe._queueHooks(t, "fx")).unqueued && (s.unqueued = 0, u = s.empty.fire, s.empty.fire = function() {
                 s.unqueued || u()
             }), s.unqueued++, c.always(function() {
@@ -343,7 +408,10 @@
                 }
                 d[r] = h && h[r] || pe.style(t, r)
             } else l = undefined;
-        if (pe.isEmptyObject(d)) "inline" === ("none" === l ? A(t.nodeName) : l) && (f.display = l);
+
+        if (pe.isEmptyObject(d))
+            "inline" === ("none" === l ? A(t.nodeName) : l) && (f.display = l);
+
         else
             for (r in h ? "hidden" in h && (p = h.hidden) : h = pe._data(t, "fxshow", {}), o && (h.hidden = !p), p ? pe(t).show() : c.done(function() {
                     pe(t).hide()
@@ -355,6 +423,7 @@
 
     function B(e, t) {
         var n, r, i, o, a;
+
         for (n in e)
             if (i = t[r = pe.camelCase(n)], o = e[n], pe.isArray(o) && (i = o[1], o = e[n] = o[0]), n !== r && (e[r] = o, delete e[n]), (a = pe.cssHooks[r]) && "expand" in a)
                 for (n in o = a.expand(o), delete e[r], o) n in e || (e[n] = o[n], t[n] = i);
@@ -364,14 +433,17 @@
     function z(o, e, t) {
         var n, a, r = 0,
             i = z.prefilters.length,
+
             s = pe.Deferred().always(function() {
                 delete u.elem
             }),
+
             u = function() {
                 if (a) return !1;
                 for (var e = jt || O(), t = Math.max(0, l.startTime + l.duration - e), n = 1 - (t / l.duration || 0), r = 0, i = l.tweens.length; r < i; r++) l.tweens[r].run(n);
                 return s.notifyWith(o, [l, n, t]), n < 1 && i ? t : (s.resolveWith(o, [l]), !1)
             },
+
             l = s.promise({
                 elem: o,
                 props: pe.extend({}, e),
@@ -396,36 +468,45 @@
                     return e ? (s.notifyWith(o, [l, 1, 0]), s.resolveWith(o, [l, e])) : s.rejectWith(o, [l, e]), this
                 }
             }),
+
             c = l.props;
+
         for (B(c, l.opts.specialEasing); r < i; r++)
-            if (n = z.prefilters[r].call(l, o, c, l.opts)) return pe.isFunction(n.stop) && (pe._queueHooks(l.elem, l.opts.queue).stop = pe.proxy(n.stop, n)), n;
+            if (n = z.prefilters[r].call(l, o, c, l.opts))
+                return pe.isFunction(n.stop) && (pe._queueHooks(l.elem, l.opts.queue).stop = pe.proxy(n.stop, n)), n;
+
         return pe.map(c, I, l), pe.isFunction(l.opts.start) && l.opts.start.call(o, l), pe.fx.timer(pe.extend(u, {
             elem: o,
             anim: l,
             queue: l.opts.queue
-        })), l.progress(l.opts.progress).done(l.opts.done, l.opts.complete).fail(l.opts.fail).always(l.opts.always)
+        })), l.progress(l.opts.progress).done(l.opts.done, l.opts.complete).fail(l.opts.fail).always(l.opts.always);
     }
 
     function $(e) {
-        return pe.attr(e, "class") || ""
+        return pe.attr(e, "class") || "";
     }
 
     function X(o) {
         return function(e, t) {
             "string" != typeof e && (t = e, e = "*");
+
             var n, r = 0,
                 i = e.toLowerCase().match(Ae) || [];
+
             if (pe.isFunction(t))
-                for (; n = i[r++];) "+" === n.charAt(0) ? (n = n.slice(1) || "*", (o[n] = o[n] || []).unshift(t)) : (o[n] = o[n] || []).push(t)
+                for (; n = i[r++];)
+                    "+" === n.charAt(0) ? (n = n.slice(1) || "*", (o[n] = o[n] || []).unshift(t)) : (o[n] = o[n] || []).push(t);
         }
     }
 
     function U(t, i, o, a) {
         function s(e) {
             var r;
+
             return u[e] = !0, pe.each(t[e] || [], function(e, t) {
                 var n = t(i, o, a);
-                return "string" != typeof n || l || u[n] ? l ? !(r = n) : void 0 : (i.dataTypes.unshift(n), s(n), !1)
+
+                return "string" != typeof n || l || u[n] ? l ? !(r = n) : void 0 : (i.dataTypes.unshift(n), s(n), !1);
             }), r
         }
         var u = {},
@@ -435,40 +516,53 @@
 
     function V(e, t) {
         var n, r, i = pe.ajaxSettings.flatOptions || {};
-        for (r in t) t[r] !== undefined && ((i[r] ? e : n || (n = {}))[r] = t[r]);
-        return n && pe.extend(!0, e, n), e
+
+        for (r in t)
+            t[r] !== undefined && ((i[r] ? e : n || (n = {}))[r] = t[r]);
+
+        return n && pe.extend(!0, e, n), e;
     }
 
     function G(e, t, n) {
         for (var r, i, o, a, s = e.contents, u = e.dataTypes;
             "*" === u[0];) u.shift(), i === undefined && (i = e.mimeType || t.getResponseHeader("Content-Type"));
+
         if (i)
             for (a in s)
                 if (s[a] && s[a].test(i)) {
                     u.unshift(a);
-                    break
+                    
+                    break;
                 } if (u[0] in n) o = u[0];
         else {
             for (a in n) {
                 if (!u[0] || e.converters[a + " " + u[0]]) {
                     o = a;
-                    break
+
+                    break;
                 }
-                r || (r = a)
+
+                r || (r = a);
             }
-            o = o || r
+
+            o = o || r;
         }
-        if (o) return o !== u[0] && u.unshift(o), n[o]
+
+        if (o) return o !== u[0] && u.unshift(o), n[o];
     }
 
     function Q(e, t, n, r) {
         var i, o, a, s, u, l = {},
             c = e.dataTypes.slice();
+
         if (c[1])
             for (a in e.converters) l[a.toLowerCase()] = e.converters[a];
+
         for (o = c.shift(); o;)
             if (e.responseFields[o] && (n[e.responseFields[o]] = t), !u && r && e.dataFilter && (t = e.dataFilter(t, e.dataType)), u = o, o = c.shift())
-                if ("*" === o) o = u;
+                if ("*" === o)
+                    o = u;
+
                 else if ("*" !== u && u !== o) {
             if (!(a = l[u + " " + o] || l["* " + o]))
                 for (i in l)
@@ -3173,6 +3267,7 @@
                 left: r.left + (n.pageXOffset || e.scrollLeft) - (e.clientLeft || 0)
             }) : r) : void 0
         },
+
         position: function() {
             if (this[0]) {
                 var e, t, n = {
@@ -3186,6 +3281,7 @@
                 }
             }
         },
+
         offsetParent: function() {
             return this.map(function() {
                 for (var e = this.offsetParent; e && !pe.nodeName(e, "html") && "static" === pe.css(e, "position");) e = e.offsetParent;
@@ -3200,9 +3296,12 @@
         pe.fn[t] = function(e) {
             return Be(this, function(e, t, n) {
                 var r = te(e);
-                if (n === undefined) return r ? i in r ? r[i] : r.document.documentElement[t] : e[t];
+
+                if (n === undefined)
+                    return r ? i in r ? r[i] : r.document.documentElement[t] : e[t];
+
                 r ? r.scrollTo(o ? pe(r).scrollLeft() : n, o ? n : pe(r).scrollTop()) : e[t] = n
-            }, t, e, arguments.length, null)
+            }, t, e, arguments.length, null);
         }
     }), pe.each(["top", "left"], function(e, n) {
         pe.cssHooks[n] = D(de.pixelPosition, function(e, t) {
@@ -3220,42 +3319,50 @@
             pe.fn[e] = function(e, t) {
                 var n = arguments.length && (r || "boolean" != typeof e),
                     i = r || (!0 === e || !0 === t ? "margin" : "border");
+
                 return Be(this, function(e, t, n) {
                     var r;
-                    return pe.isWindow(e) ? e.document.documentElement["client" + o] : 9 === e.nodeType ? (r = e.documentElement, Math.max(e.body["scroll" + o], r["scroll" + o], e.body["offset" + o], r["offset" + o], r["client" + o])) : n === undefined ? pe.css(e, t, i) : pe.style(e, t, n, i)
-                }, a, n ? e : undefined, n, null)
+
+                    return pe.isWindow(e) ? e.document.documentElement["client" + o] : 9 === e.nodeType ? (r = e.documentElement, Math.max(e.body["scroll" + o], r["scroll" + o], e.body["offset" + o], r["offset" + o], r["client" + o])) : n === undefined ? pe.css(e, t, i) : pe.style(e, t, n, i);
+                }, a, n ? e : undefined, n, null);
             }
         })
     }), pe.fn.extend({
         bind: function(e, t, n) {
-            return this.on(e, null, t, n)
+            return this.on(e, null, t, n);
         },
+
         unbind: function(e, t) {
-            return this.off(e, null, t)
+            return this.off(e, null, t);
         },
+
         delegate: function(e, t, n, r) {
-            return this.on(t, e, n, r)
+            return this.on(t, e, n, r);
         },
+
         undelegate: function(e, t, n) {
-            return 1 === arguments.length ? this.off(e, "**") : this.off(t, e || "**", n)
+            return 1 === arguments.length ? this.off(e, "**") : this.off(t, e || "**", n);
         }
     }), pe.fn.size = function() {
-        return this.length
+        return this.length;
     }, pe.fn.andSelf = pe.fn.addBack, "function" == typeof define && define.amd && define("jquery", [], function() {
-        return pe
+        return pe;
     });
     var wn = C.jQuery,
         Tn = C.$;
     return pe.noConflict = function(e) {
-        return C.$ === pe && (C.$ = Tn), e && C.jQuery === pe && (C.jQuery = wn), pe
+        return C.$ === pe && (C.$ = Tn), e && C.jQuery === pe && (C.jQuery = wn), pe;
     }, e || (C.jQuery = C.$ = pe), pe
 }),
 function() {
     "use strict";
     var e = function(c, u) {
         var l;
-        c.rails !== u && c.error("jquery-ujs has already been loaded!");
+
+        c.rails !== u && c.error("jquery-ujs has already been loaded...");
+
         var e = c(document);
+
         c.rails = l = {
             linkClickSelector: "a[data-confirm], a[data-method], a[data-remote]:not([disabled]), a[data-disable-with], a[data-disable]",
             buttonClickSelector: "button[data-remote]:not([form]):not(form button), button[data-confirm]:not([form]):not(form button)",
@@ -3268,37 +3375,49 @@ function() {
             fileInputSelector: "input[name][type=file]:not([disabled])",
             linkDisableSelector: "a[data-disable-with], a[data-disable]",
             buttonDisableSelector: "button[data-remote][data-disable-with], button[data-remote][data-disable]",
+
             csrfToken: function() {
-                return c("meta[name=csrf-token]").attr("content")
+                return c("meta[name=csrf-token]").attr("content");
             },
+
             csrfParam: function() {
-                return c("meta[name=csrf-param]").attr("content")
+                return c("meta[name=csrf-param]").attr("content");
             },
+
             CSRFProtection: function(e) {
                 var t = l.csrfToken();
-                t && e.setRequestHeader("X-CSRF-Token", t)
+                t && e.setRequestHeader("X-CSRF-Token", t);
             },
+
             refreshCSRFTokens: function() {
-                c('form input[name="' + l.csrfParam() + '"]').val(l.csrfToken())
+                c('form input[name="' + l.csrfParam() + '"]').val(l.csrfToken());
             },
+
             fire: function(e, t, n) {
                 var r = c.Event(t);
-                return e.trigger(r, n), !1 !== r.result
+
+                return e.trigger(r, n), !1 !== r.result;
             },
+
             confirm: function(e) {
-                return confirm(e)
+                return confirm(e);
             },
+
             ajax: function(e) {
-                return c.ajax(e)
+                return c.ajax(e);
             },
+
             href: function(e) {
-                return e[0].href
+                return e[0].href;
             },
+
             isRemote: function(e) {
-                return e.data("remote") !== u && !1 !== e.data("remote")
+                return e.data("remote") !== u && !1 !== e.data("remote");
             },
+
             handleRemote: function(r) {
                 var e, t, n, i, o, a;
+
                 if (l.fire(r, "ajax:before")) {
                     if (i = r.data("with-credentials") || null, o = r.data("type") || c.ajaxSettings && c.ajaxSettings.dataType, r.is("form")) {
                         e = r.data("ujs:submit-button-formmethod") || r.attr("method"), t = r.data("ujs:submit-button-formaction") || r.attr("action"), n = c(r[0]).serializeArray();
@@ -3309,26 +3428,33 @@ function() {
                         type: e || "GET",
                         data: n,
                         dataType: o,
+
                         beforeSend: function(e, t) {
                             if (t.dataType === u && e.setRequestHeader("accept", "*/*;q=0.5, " + t.accepts.script), !l.fire(r, "ajax:beforeSend", [e, t])) return !1;
                             r.trigger("ajax:send", e)
                         },
+
                         success: function(e, t, n) {
                             r.trigger("ajax:success", [e, t, n])
                         },
+
                         complete: function(e, t) {
                             r.trigger("ajax:complete", [e, t])
                         },
+
                         error: function(e, t, n) {
                             r.trigger("ajax:error", [e, t, n])
                         },
+
                         crossDomain: l.isCrossDomain(t)
                     }, i && (a.xhrFields = {
                         withCredentials: i
-                    }), t && (a.url = t), l.ajax(a)
+                    }), t && (a.url = t), l.ajax(a);
                 }
-                return !1
+
+                return !1;
             },
+
             isCrossDomain: function(e) {
                 var t = document.createElement("a");
                 t.href = location.href;
@@ -3339,6 +3465,7 @@ function() {
                     return !0
                 }
             },
+
             handleMethod: function(e) {
                 var t = l.href(e),
                     n = e.data("method"),
@@ -3349,27 +3476,33 @@ function() {
                     s = '<input name="_method" value="' + n + '" type="hidden" />';
                 o === u || i === u || l.isCrossDomain(t) || (s += '<input name="' + o + '" value="' + i + '" type="hidden" />'), r && a.attr("target", r), a.hide().append(s).appendTo("body"), a.submit()
             },
+
             formElements: function(e, t) {
                 return e.is("form") ? c(e[0].elements).filter(t) : e.find(t)
             },
+
             disableFormElements: function(e) {
                 l.formElements(e, l.disableSelector).each(function() {
                     l.disableFormElement(c(this))
                 })
             },
+
             disableFormElement: function(e) {
                 var t, n;
                 t = e.is("button") ? "html" : "val", (n = e.data("disable-with")) !== u && (e.data("ujs:enable-with", e[t]()), e[t](n)), e.prop("disabled", !0), e.data("ujs:disabled", !0)
             },
+
             enableFormElements: function(e) {
                 l.formElements(e, l.enableSelector).each(function() {
                     l.enableFormElement(c(this))
                 })
             },
+
             enableFormElement: function(e) {
                 var t = e.is("button") ? "html" : "val";
                 e.data("ujs:enable-with") !== u && (e[t](e.data("ujs:enable-with")), e.removeData("ujs:enable-with")), e.prop("disabled", !1), e.removeData("ujs:disabled")
             },
+
             allowAction: function(e) {
                 var t, n = e.data("confirm"),
                     r = !1;
@@ -3384,6 +3517,7 @@ function() {
                 }
                 return r && t
             },
+
             blankInputs: function(e, t, n) {
                 var r, i, o, a = c(),
                     s = t || "input,textarea",
@@ -3393,18 +3527,22 @@ function() {
                     (r = c(this)).is("input[type=radio]") ? (o = r.attr("name"), l[o] || (0 === e.find('input[type=radio]:checked[name="' + o + '"]').length && (i = e.find('input[type=radio][name="' + o + '"]'), a = a.add(i)), l[o] = o)) : (r.is("input[type=checkbox],input[type=radio]") ? r.is(":checked") : !!r.val()) === n && (a = a.add(r))
                 }), !!a.length && a
             },
+
             nonBlankInputs: function(e, t) {
                 return l.blankInputs(e, t, !0)
             },
+
             stopEverything: function(e) {
                 return c(e.target).trigger("ujs:everythingStopped"), e.stopImmediatePropagation(), !1
             },
+
             disableElement: function(e) {
                 var t = e.data("disable-with");
                 t !== u && (e.data("ujs:enable-with", e.html()), e.html(t)), e.on("click.railsDisable", function(e) {
                     return l.stopEverything(e)
                 }), e.data("ujs:disabled", !0)
             },
+
             enableElement: function(e) {
                 e.data("ujs:enable-with") !== u && (e.html(e.data("ujs:enable-with")), e.removeData("ujs:enable-with")), e.off("click.railsDisable"), e.removeData("ujs:disabled")
             }
@@ -3427,6 +3565,7 @@ function() {
                 n = t.data("method"),
                 r = t.data("params"),
                 i = e.metaKey || e.ctrlKey;
+                
             if (!l.allowAction(t)) return l.stopEverything(e);
             if (!i && t.is(l.linkDisableSelector) && l.disableElement(t), l.isRemote(t)) {
                 if (i && (!n || "GET" === n) && !r) return !0;

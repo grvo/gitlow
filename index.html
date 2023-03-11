@@ -44,6 +44,7 @@
         <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/dashboard-74d536a2af1a.css">
         <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/site-2f61d41ff9ad.css">
         <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/home-3bba68f788b5.css">
+        <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/home-campaign-d4421b93e1ca.css">
 
         <!-- javascript -->
         <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/wp-runtime-20047f84de83.js"></script>
@@ -80,6 +81,9 @@
         <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/home-0369a2a6b0c5.js"></script>
         <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_webgl-globe_dist_js_main_js-c61608acc916.js"></script>
         <script crossorigin="anonymous" defer="defer" type="application/javascript" src="https://github.githubassets.com/assets/webgl-globe-0fd6a24e0678.js"></script>
+
+        <!-- fontes -->
+        <link rel="preload" href="https://github.githubassets.com/static/fonts/github/mona-sans.woff2" as="font" type="font/woff2" crossorigin> 
 
         <!-- título e descrição -->
         <title>gitlow</title>
@@ -145,12 +149,16 @@
 
         <!-- conteúdo de login do usuário -->
         <meta name="user-login" content="">
+        <meta name="is_logged_out_page" content="true">
 
         <!-- descrição de open search -->
         <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="gitlow">
 
-        <!-- ícone fluído -->
+        <!-- ícones -->
         <link rel="fluid-icon" href="/assets/fluidicon.png" title="gitlow">
+        <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+        <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
+        <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg">
 
         <!-- id de aplicação de firebase e itunes -->
         <meta property="fb:app_id" content="1401488693436528">
@@ -165,10 +173,26 @@
         <meta http-equiv="x-pjax-css-version" content="5a1182621cefa970fb21d131e5d9fb0fb4e436048913c5568685c5c15e5f7fc3" data-turbo-track="reload">
         <meta http-equiv="x-pjax-js-version" content="795b23a22ccf30499393dd700807c56897096c0a6f382988f645ec35c940dc2f" data-turbo-track="reload">
 
+        <!-- turbo -->
+        <meta name="turbo-body-classes" content="logged-out env-production page-responsive header-overlay home-campaign">
         <meta name="turbo-cache-control" content="no-preview" data-turbo-transient="">
 
         <!-- globo (webgl) -->
         <link rel="preload" href="/webgl-globe/data/data.json" as="fetch" type="application/json">
+
+        <!-- url canônico -->
+        <link rel="canonical" href="https://grvo.github.io/gitlow/" data-turbo-transient>
+
+        <!-- páginas úteis (estatísticas/erros) -->
+        <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+        <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+        <meta name="browser-optimizely-client-errors-url" content="https://api.github.com/_private/browser/optimizely_client/errors">
+
+        <!-- tema de cor -->
+        <meta name="theme-color" content="#1e2327">
+
+        <!-- arquivo manifest -->
+        <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials">
     </head>
 
     <body>
